@@ -21,7 +21,7 @@ namespace GeometryLibrary.Tests
             Assert.AreEqual(6, triangle.Area, 1e-10);
         }
 
-
+        
         [TestMethod]
         public void TestRightAngledTriangle()
         {
