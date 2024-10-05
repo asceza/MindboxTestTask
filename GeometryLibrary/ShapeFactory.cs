@@ -1,5 +1,6 @@
-﻿
-namespace GeometryLibrary.Shapes
+﻿using GeometryLibrary.Shapes;
+
+namespace GeometryLibrary
 {
     public static class ShapeFactory
     {

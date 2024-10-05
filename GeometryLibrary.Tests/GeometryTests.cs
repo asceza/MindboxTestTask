@@ -7,13 +7,27 @@ namespace GeometryLibrary.Tests
     public class GeometryTests
     {
         [TestMethod]
-        public void TestCircleArea()
+        public void TestCircleAreaWithPositiveRadius()
         {
             var circle = ShapeFactory.CreateCircle(5);
-            Assert.AreEqual(Math.PI * 25, circle.Area, 1e-10);
+            Assert.AreEqual(Math.PI * 5 * 5, circle.Area, 1e-10);
         }
 
-        //
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestCircleWithNegativeRadius()
+        {
+            var circle = ShapeFactory.CreateCircle(-5);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestCircleWithNullRadius()
+        {
+            var circle = ShapeFactory.CreateCircle(0);
+        }
+
+
         [TestMethod]
         public void TestTriangleArea()
         {

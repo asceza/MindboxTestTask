@@ -9,12 +9,24 @@ namespace GeometryLibrary.Shapes
 
         public Triangle(double a, double b, double c)
         {
-            if (a + b <= c || a + c <= b || b + c <= a)
-                throw new ArgumentException("Стороны не образуют треугольник");
+            if (IsTriangle(a, b, c))
+            {
+                _a = a;
+                _b = b;
+                _c = c;
+            }
+        }
 
-            _a = a;
-            _b = b;
-            _c = c;
+        private bool IsTriangle(double a, double b, double c)
+        {
+            if (a + b <= c || a + c <= b || b + c <= a)
+            {
+                throw new ArgumentException("Стороны не образуют треугольник");
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public double Area
