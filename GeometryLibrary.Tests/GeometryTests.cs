@@ -9,21 +9,33 @@ namespace GeometryLibrary.Tests
         [TestMethod]
         public void TestCircleAreaWithPositiveRadius()
         {
-            var circle = ShapeFactory.CreateCircle(5);
-            Assert.AreEqual(Math.PI * 5 * 5, circle.Area, 1e-10);
+            // arrange
+            double r = 5;
+            double expected = Math.PI * 5 * 5;
+
+            // act
+            var circle = ShapeFactory.CreateCircle(r);
+            double actual = circle.Area;
+
+            // assert
+            Assert.AreEqual(expected, actual, 1e-10);
         }
+
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestCircleWithNegativeRadius()
         {
-            var circle = ShapeFactory.CreateCircle(-5);
+            double r = -5;
+            var circle = ShapeFactory.CreateCircle(r);
         }
+
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestCircleWithNullRadius()
         {
+            double r = 0;
             var circle = ShapeFactory.CreateCircle(0);
         }
 
@@ -31,8 +43,18 @@ namespace GeometryLibrary.Tests
         [TestMethod]
         public void TestTriangleArea()
         {
-            var triangle = ShapeFactory.CreateTriangle(3, 4, 5);
-            Assert.AreEqual(6, triangle.Area, 1e-10);
+            // arrange
+            double a = 3;
+            double b = 4;
+            double c = 5;
+            double expected = 6;
+
+            // act
+            var triangle = ShapeFactory.CreateTriangle(a, b, c);
+            double actual = triangle.Area;
+
+            // assert
+            Assert.AreEqual(expected, actual, 1e-10);
         }
 
         
@@ -47,8 +69,17 @@ namespace GeometryLibrary.Tests
         [TestMethod]
         public void TestNotRightAngledTriangle()
         {
-            var triangle = ShapeFactory.CreateTriangle(5, 6, 7);
-            Assert.IsFalse(((Triangle)triangle).IsRightAngled());
+            // arrange
+            double a = 5;
+            double b = 6;
+            double c = 7;
+
+            // act
+            var triangle = ShapeFactory.CreateTriangle(a, b, c);
+            bool condition = ((Triangle)triangle).IsRightAngled();
+
+            // assert
+            Assert.IsFalse(condition);
         }
 
 
@@ -56,7 +87,11 @@ namespace GeometryLibrary.Tests
         [ExpectedException(typeof(ArgumentException))]
         public void TestInvalidTriangle()
         {
-            ShapeFactory.CreateTriangle(1, 2, 3);
+            double a = 1;
+            double b = 2;
+            double c = 3;
+
+            ShapeFactory.CreateTriangle(a, b, c);
         }
     }
 }
