@@ -61,8 +61,17 @@ namespace GeometryLibrary.Tests
         [TestMethod]
         public void TestRightAngledTriangle()
         {
-            var triangle = ShapeFactory.CreateTriangle(3, 4, 5);
-            Assert.IsTrue(((Triangle)triangle).IsRightAngled());
+            // arrange
+            double a = 3;
+            double b = 4;
+            double c = 5;
+
+            // act
+            var triangle = ShapeFactory.CreateTriangle(a, b, c);
+            bool condition = ((Triangle)triangle).IsRightAngled();
+
+            // assert
+            Assert.IsTrue(condition);
         }
 
 
